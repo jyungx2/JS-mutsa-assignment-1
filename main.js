@@ -61,10 +61,9 @@ btnPurchase.addEventListener("click", function (e) {
   if (!outputArea.hasChildNodes()) {
     alert("상품을 선택하세요.");
   } else {
+    // 조건2) 상품이 선택된 상황에서 버튼을 클릭하면 새로운 윈도우 창이 열리면서 결제 금액이 출력
     openChildWindow();
   }
-
-  // 조건2) 상품이 선택된 상황에서 버튼을 클릭하면 새로운 윈도우 창이 열리면서 결제 금액이 출력
 });
 
 function openChildWindow() {
