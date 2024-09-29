@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body, p {
+          margin: unset;
+      }
+
+      :root {
+        font-size: 62.5%;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .child-section {
+        padding: 20px;
+      }
+
+      h1 {
+        margin: unset;
+        font-size: unset;
+        font-weight: unset;
+      }
+
+      .child-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+      }
+
+      p {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="child-section">
+      <h1 class="child-title">결제창</h1>
+      <p><span class="child-price-number"></span>원을 결제하겠습니다.</p>
+      <p>아래에 신용카드 번호를 입력하고 결제버튼을 눌러주세요.</p>
+
+      <input type="text" id="cardNumber" />
+      <button class="purchase">결제</button>
+    </section>
+
+    <script>
+      const price = document.querySelector('.child-price-number');
+      price.textContent = opener.total;
+
+      document.querySelector('.purchase').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // 💥카드 번호를 리스너 내에서 가져오기💥
+        const cardNumber = document.querySelector('#cardNumber').value;
+
+        console.log(cardNumber)
+        // 무조건 카드 번호 16자리 입력하도록 설정하자.
+        if (!cardNumber || cardNumber.trim().length === 0) {
+            alert ('카드 번호를 입력하세요!');
+        } else if (cardNumber.length < 16 || cardNumber.length > 16) {
+            alert('카드 번호 16자리를 입력하세요.');
+        } else {
+            window.close();
+            alert(`${cardNumber}로 ${opener.total}원이 결제되었습니다.`)
+        }
+      })
+    </script>
+  </body>
+</html>
